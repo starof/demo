@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li{
+	margin:0;
+	padding:0;
+	}
+ul{list-style:none;}
+.container{
+	margin:30px auto;
+	width:550px;
+	}
+span{
+	display:inline-block;
+	float:left;
+	margin-top:20px;
+	width:60px;
+	height:60px;
+	}
+.container_left{background:url(../images/left.png) no-repeat;}
+.container_right{background:url(../images/right.png) no-repeat;}
+.container_main{
+	position:relative;
+	float:left;
+	width:415px;
+	overflow:hidden;
+	}
+.container_main ul{position:relative;}
+.container_main li{
+	float:left;
+	width:105px;
+	}
+

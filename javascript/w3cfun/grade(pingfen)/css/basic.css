@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li,p{
+	margin:0;
+	padding:0;
+	}
+ul{
+	margin:50px auto 20px;
+	width:650px;
+	list-style:none;
+	overflow:hidden;
+	}
+li{
+	float:left;
+	width:128px;
+	height:128px;
+	background:url(../images/star.png) no-repeat;
+	}
+.active{background-position:0 -138px;}
+p{
+	display:none;
+	margin:0 auto;
+	width:600px;
+	height:60px;
+	border:1px solid;
+	border-color:#39F #fff #fff #39F;
+	box-shadow:0 0 0 4px #9CF;
+	text-align:center;
+	font-size:40px;
+	line-height:60px;
+	}

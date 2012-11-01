@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>仿淘宝产品展示效果</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css" />
+<script type="text/javascript">
+window.onload = function()
+{
+	var oProduct = document.getElementById("product");
+	var oLi = oProduct.getElementsByTagName("li");
+	var i = 0;
+	for(i=0;i<oLi.length;i++)
+	{
+		/*功能一：动态的为每个产品添加“new”*/
+		var oSpan = document.createElement("span");/*创建span元素*/
+		oSpan.innerHTML = "new";/*为span元素添加new文本内容*/
+		oLi[i].appendChild(oSpan);/*将span元素插入到li内部*/
+		oLi[i].index = i;
+		/*功能二：鼠标经过，变换产品图片*/
+		oLi[i].onmouseover = function()
+		{
+			
+			this.children[0].src = "../images/"+(this.index+1)+"-1.jpg";
+		}
+		/*功能三：鼠标离开，变换为原产品图片*/
+		oLi[i].onmouseout = function()
+		{
+			
+			this.children[0].src = "../images/"+(this.index+1)+".jpg";
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<div id="product">
+  	<ul>
+    	<li><img src="../images/1.jpg" width="190" height="280" /></li>
+      <li><img src="../images/2.jpg" width="190" height="280" /></li>
+      <li><img src="../images/3.jpg" width="190" height="280" /></li>
+      <li><img src="../images/4.jpg" width="190" height="280" /></li>
+    </ul>
+    <p></p>
+  </div>
+</body>
+</html>

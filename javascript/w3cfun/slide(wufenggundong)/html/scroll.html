@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css" />
+<script type="text/javascript">
+window.onload = function()
+{
+	var oBtnLeft = document.getElementById("container_left");/*获取向左滚动按钮*/
+	var oBtnRight = document.getElementById("container_right");/*获取向右滚动按钮*/
+	var oList = document.getElementById("container_main_list");/*获取列表*/
+	var oListLi = oList.getElementsByTagName("li");/*获取单个列表*/
+	//var speed = -5;/*滚动的间隔，步长*/
+	var timer = null;/*定时器*/
+	oList.innerHTML += oList.innerHTML;/*复制1个列表*/
+	oList.style.width = oListLi[0].offsetWidth * oListLi.length +"px";/*动态设置列表的宽度*/
+	
+/*功能一：定时滚动*/
+	function autoScroll()
+	{
+		oList.style.left = oList.offsetLeft -5 + "px";/*列表的左边距*/
+		//console.log(oList.offsetLeft);
+		if(oList.offsetLeft<-oList.offsetWidth/2){
+			
+			oList.style.left = "0px"; 
+			//oList.style.left +=100;
+			
+			}
+			
+	}
+	timer = setInterval(autoScroll,100);/*定时滚动*/
+	
+/*功能二：鼠标经过，列表停止滚动;
+         鼠标离开，列表继续滚动。
+*/
+	oList.onmouseover = function()
+	{
+		clearInterval(timer);	/*取消定时滚动*/
+	}
+	oList.onmouseout = function()
+	{
+		timer = setInterval(autoScroll,50);
+	}
+	
+/*功能三：鼠标经过“向左按钮”，列表向左滚动;
+				 鼠标经过“向右按钮”，列表向右滚动。
+*/
+	oBtnLeft.onmouseover = function()
+	{
+		speed = -5;
+	}	
+	oBtnRight.onmouseover = function()
+	{
+		speed = 5;
+	}
+}
+</script>
+</head>
+
+<body>
+	<div class="container">
+  	<span class="container_left" id="container_left">&nbsp;</span>
+    <div class="container_main">
+    	<ul id="container_main_list">
+      	<li><img src="../images/1.png" /></li>
+        <li><img src="../images/2.png" /></li>
+        <li><img src="../images/3.png" /></li>
+        <li><img src="../images/4.png" /></li>
+      </ul>
+    </div>
+    <span class="container_right" id="container_right">&nbsp;</span>
+  </div>
+</body>
+</html>

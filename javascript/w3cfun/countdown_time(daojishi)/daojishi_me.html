@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+		.wrap{width:500px;margin:0 auto;font-family:'微软雅黑';}
+		h1{text-align:center;}
+		.input{margin:10px 0;}
+		.input input{width:50px;}
+		a.btn{display:block;width:80px;height:50px;border:1px solid #dfdfdf;color:#ff3300;font:bold 18px/50px '微软雅黑';text-decoration:none;text-align:center;}
+		.show_time{color:#666;font-size:30px;}
+		.show_time span{color:#ff3300;font-size:40px;}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<h1>倒计时</h1>
+	<div class="input">
+		<label>请输入：</label>
+		<input type="text" id="year"/><label>年</label>
+		<input type="text" id="month"/><label>月</label>
+		<input type="text" id="date"/><label>日</label>
+	</div>
+	<a href="#" class="btn" id="btn">开始</a>
+<!-- 	<p id="tips">现在距离.0000年00月00日.还剩</p> -->
+	<p class="show_time" id="show_time"></p>
+</div>
+<script type="text/javascript">
+	var Oshow = document.getElementById("show_time");
+	var Obtn = document.getElementById("btn");
+	var time = null;
+	
+	Obtn.onclick = function(){
+	//这里把原来写在caculateTime函数里面的三个变量Oyear，Omonth，Odate移动到这里，是因为
+	//之前有个问题，就是修改截止日期，他下面的数字会自动变化，无需再点击按钮。移动到这里是
+	//因为每次点击按钮，他应该重新获取当前设置的值
+		var Oyear = parseInt(document.getElementById("year").value);
+		var Omonth = parseInt(document.getElementById("month").value);
+		var Odate = parseInt(document.getElementById("date").value);
+		if(time != null){
+			clearInterval(time);
+		}
+		time = setInterval(function(){
+				caculateTime(Oyear,Omonth,Odate);
+			},1000);
+	}
+	function caculateTime(Oyear,Omonth,Odate){
+		//未来的时间Omonth要-1的，因为month从0开始计数
+		var future = new Date(Oyear,Omonth-1,Odate);
+		//现在的时间
+		var now = new Date();
+		
+		//时间差
+			var deadline = Math.floor((future - now)/1000);
+			if(deadline < 0){
+				Oshow.innerHTML = "逾期,倒计时已经失效";
+			}else{
+				var d = Math.floor(deadline /3600/24);
+				var h = Math.floor((deadline/3600)%24);
+				var min = Math.floor((deadline/60)%60);
+				var s = Math.floor(deadline % 60);
+				Oshow.innerHTML = "<span>" + d + "</span> 天 " + "<span>" + h + "</span> 时 " + "<span>" + min + "</span> 分 " + "<span>" + s + "</span> 秒"
+			}
+	}
+</script>	
+</body>
+</html>

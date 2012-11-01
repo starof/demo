@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+		.slide{width:600px;margin:0 auto;}
+		span{float:left;margin-top:35px;consor:pointer;}
+		.slide div{overflow:hidden;position:relative;float:left;width:420px;}
+		ul{overflow:hidden;position:relative;width:840px;list-style:none;padding-left:0;}
+		ul li{float:left;margin-right:5px;}
+	</style>
+</head>
+<body>
+	<div class="slide">
+		<span id="pre"><img src="images/left.png" alt="" /></span>
+		<div>
+			<ul>
+				<li><img src="images/1.png" alt="" /></li>
+				<li><img src="images/2.png" alt="" /></li>
+				<li><img src="images/3.png" alt="" /></li>
+				<li><img src="images/4.png" alt="" /></li>
+			</ul>
+		</div>
+		<span id="next"><img src="images/right.png" alt="" /></span>
+	</div>
+	<!-- <script type="text/javascript">
+		var pre = document.getElementById("pre");
+		var next = document.getElementById("next");
+		var Oul = document.getElementsByTagName("ul")[0];
+		Oul.innerHTML += Oul.innerHTML;
+		var Oli = Oul.getElementsByTagName("li");
+		Oul.offsetWidth = Oli[0].offsetWidth * Oli.length + "px";
+		var time = null;
+		function autoScroll(){
+			//console.log(Oul.offsetLeft);
+			//console.log(Oul.offsetWidth);
+			Oul.style.left = Oul.offsetLeft -5 + "px";
+			//console.log(Oul.style.left);//-5px
+			//console.log(Oul.offsetLeft);
+			if(Oul.offsetLeft < -Oul.offsetWidth/2){
+				Oul.style.left = "0px";
+			}else if(Oul.offsetLeft > 0){
+				Oul.style.left = -Oul.offsetWidth/2;
+			}
+		}
+		time = setInterval(autoScroll,100);
+		Oul.onmouseover = function(){
+			clearInterval(time);
+		}
+		Oul.onmouseout= function(){
+			time = setInterval(autoScroll,80);
+		}
+		pre.onclick = function(){
+			Oul.style.left = "-5px";
+		}
+		next.onclick = function(){
+			Oul.style.left = "5px";
+		}
+		
+	</script> -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		var time = null;
+		function autoScroll(){
+			
+		}
+		time = setInterval(autoScroll,1000);
+	</script>
+</body>
+</html>

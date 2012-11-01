@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+	  .imgshows{overflow:hidden;position:relative;width:100px;height:100px;}
+		/* #imgid{position:absolute;} */
+	</style>
+</head>
+<body>
+	<div class="car_show">
+		<h1>cars show</h1>
+		<ul id="cars">
+			<li><a href="#">first car</a></li>
+			<li><a href="#">second car</a></li>
+			<li><a href="#">third car</a></li>
+			<li><a href="#">forth car</a></li>
+		</ul>
+	</div>
+	<div class="imgshows"><img id="imgid" src="images/cars.jpg" alt="car shows" title="cars show"/></div>
+	<script type="text/javascript">
+		function positionLinks(){//完成一个功能：鼠标悬停到哪个链接，显示第几个图片
+			if(!document.getElementById) return false;
+			if(!document.getElementById("cars")) return false;
+			if(!document.getElementsByTagName) return false;
+			if(!document.getElementsByTagName("a")) return false;
+			var carslist = document.getElementById("cars");
+			var links = carslist.getElementsByTagName("a");
+			var imgid = document.getElementById("imgid");
+			imgid.style.position = "absolute";
+			imgid.style.left = "0px";
+			imgid.style.top = "0px";
+			for(var i=0; i<links.length; i++){
+				links[i].onmouseover = function(){
+				  moveElement("imgid",i*(-100),0,30);
+				}
+			}
+			/*links[0].onmouseover = function(){
+				  moveElement("imgid",0,0,30);
+			}
+			links[1].onmouseover = function(){
+				  moveElement("imgid",-100,0,30);
+			}*/
+		}
+		function moveElement(elemId,final_x,final_y,interval){
+			if(!document.getElementById) return false;
+			if(!document.getElementById(elemId)) return false;
+			var elemid = document.getElementById(elemId);
+			/*if(!elemid.style.left){
+				elemid.style.left = "0px";
+			}
+			if(!elemid.style.top){
+				elemid.style.top = "0px";
+			}*/
+			var xoff = parseInt(elemid.style.left);
+			var yoff = parseInt(elemid.style.top);
+			if(xoff==final_x && yoff==final_y){
+			  return true;
+			}
+			if(xoff < final_x){
+				xoff++;
+			}else if(xoff > final_y){
+			  xoff--;
+			}
+			if(yoff < final_y){
+			  yoff++;
+			}else if(yoff > final_y){
+			  yoff--;
+			}
+			elemid.style.left = xoff + "px";
+			elemid.style.left = yoff + "px";
+			var repeat = "moveElement('"+elemid+"',"+final_x+","+final_y+","+interval+")";
+			move=setTimeout(repeat,interval);
+		}
+		positionLinks();
+	</script>
+</body>
+</html>
