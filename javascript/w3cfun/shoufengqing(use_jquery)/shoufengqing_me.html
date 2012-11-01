@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>水平手风琴效果</title>
+	<style type="text/css">
+		ul{position:relative;overflow:hidden;zoom:1;height:334px;padding-left:0;list-style:none;}
+		ul li{position:absolute;top:0;left:0;float:left;}
+		ul li a{display:block;border:1px solid #000;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#"><img src="images/01.jpg" alt="" /></a></li>
+		<li><a href="#"><img src="images/02.jpg" alt="" /></a></li>
+		<li><a href="#"><img src="images/03.jpg" alt="" /></a></li>
+		<li><a href="#"><img src="images/04.jpg" alt="" /></a></li>
+		<li><a href="#"><img src="images/05.jpg" alt="" /></a></li>
+		<li><a href="#"><img src="images/06.jpg" alt="" /></a></li>
+	</ul>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//方法一：
+			/*$("li").each(function(i){
+				//默认位置
+				$(this).css({left: i*120 + "px"});//如果不加{}，每个li不会应用上这个left值
+				console.log($(this));
+				$(this).mouseover(function(){	
+					var l = 0;
+					$("li").each(function(index){
+						$("li").eq(index).stop(true,false).animate({left: l + "px"},500);
+						l = i == index ? l + 500 : l + 50;
+					});
+				});	
+				$(this).mouseout(function(){
+					$("li").each(function(index){
+						$("li").eq(index).stop(true,false).animate({left: index*120 + "px"},500);
+					});
+				});
+			});*/
+			//方法二：
+			$("li").each(function(i){
+				$(this).hover(function(){
+					var l = 0;
+					$("li").each(function(index){
+						$("li").eq(index).stop(true,false).animate({left: l + "px"},500);
+						l = i == index ? l + 500 : l + 50;
+					});
+				}	
+				,function(){
+					$("li").each(function(index){
+						$("li").eq(index).stop(true,false).animate({left: index*120 + "px"},500);
+					});
+				});
+				
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		
+	</script>
+	
+	
+</body>
+</html>
