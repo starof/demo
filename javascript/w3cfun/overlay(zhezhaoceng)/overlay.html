@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>遮罩层</title>
+<style type="text/css">
+	#btn{
+		width:80px;
+		height:40px;
+		}
+	#overlay{
+		position:absolute;
+		top:0;
+		left:0;
+		background:#000;
+		opacity:0.5;
+		filter:alpha(opacity=50);
+		z-index:100;
+		}
+</style>
+</head>
+
+<body>
+<button id="btn">点击弹出遮罩层</button>
+
+<!--Amy(add) 前端添加js效果-->
+<script type="text/javascript">
+window.onload = function(){
+		var oBtn= document.getElementById("btn");/*获取按钮元素*/
+		oBtn.onclick = function(){
+			var oBody = document.getElementsByTagName("body")[0];/*获取body元素*/
+			var clientWidth = document.documentElement.clientWidth;/*获取文档可视宽度（不包括边框）*/
+			var clientHeight = document.documentElement.clientHeight;/*获取文档可视高度（不包括边框）*/
+			var oDiv = document.createElement("div");/*创建元素*/
+			oBody.appendChild(oDiv);/*将元素追加到body内部最后*/
+			oDiv.id = "overlay";/*设置元素id*/
+			oDiv.style.width = clientWidth + "px";/*设置元素宽度*/
+			oDiv.style.height = clientHeight + "px";/*设置元素高度*/
+			var overlay = document.getElementById("overlay");
+			window.onresize = function(){/*改变窗口大小事件*/
+				var clientWidth = document.documentElement.clientWidth;
+				var clientHeight = document.documentElement.clientHeight;				
+				overlay.style.width = clientWidth + "px";
+				overlay.style.height = clientHeight + "px";					
+			}
+		}
+	}
+</script>
+</body>
+</html>

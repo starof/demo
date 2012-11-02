@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>返回页面顶部</title>
+<style type="text/css">
+	body{height:1000px;}
+	span{
+		display:none;
+		position:fixed;
+		right:0;
+		bottom:0;
+		padding:5px;
+		color:#000;
+		background:#ccc;
+		}
+</style>
+</head>
+
+<body>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p>
+	<p>sdfgsg</p><p>sdfgsg</p>
+	<span id="top">&uarr;返回顶部</span>
+
+<script type="text/javascript">
+/*功能：返回顶部*/
+window.onscroll = function()/*窗口滚动事件*/
+{
+	var oBlack = document.getElementById("top");/*获取元素*/
+	if(document.documentElement.scrollTop > 0 )/*滚动条具上高度大于0，高于一屏*/
+	{
+		oBlack.style.display = "block";/*返回按钮显示*/
+	}
+	else{
+		oBlack.style.display = "none";/*返回按钮隐藏*/
+	}
+	oBlack.onclick = function()
+	{
+		document.documentElement.scrollTop = 0;/*点击返回按钮，返回顶部*/
+	}
+}
+</script>
+</body>
+</html>
