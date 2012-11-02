@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js入门练习——留言板</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css" />
+<script type="text/javascript">
+window.onload = function()
+{
+	var oTxt = document.getElementById("txt");
+	var oBtn = document.getElementById("btn");
+	var oMessage = document.getElementById("message");
+	var aLi = oMessage.getElementsByTagName("li");
+	/*点击“留言”按钮，留言*/
+	oBtn.onclick = function()
+	{
+		/*输入内容不能为空*/
+		if(oTxt.value === "")
+		{
+			alert("请输入留言内容！！！")
+		}
+		else{
+		var oLi = document.createElement("li");/*创建li元素*/
+	
+		var oImg = document.createElement("img");/*创建img元素*/
+		oImg.src = "../images/head.jpg";/*为img元素添加src属性是必须的*/
+	
+		var oP = document.createElement("p");/*创建p元素*/
+		oP.innerHTML = oTxt.value;/*获取textarea中的内容为p的内容*/
+	
+		oLi.appendChild(oImg);/*将img元素追加为li元素的子元素*/
+		oLi.appendChild(oP);/*将p元素追加为li元素的子元素*/
+		/*当前有li时，将新添加的li,插入到最前面*/
+		if(aLi.length>0)
+		{
+			oMessage.insertBefore(oLi,oMessage.firstChild);
+		}
+		/*当前没有li时，追加li元素*/
+		else{
+			oMessage.appendChild(oLi);	
+		}
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<div class="container">
+  	<textarea id="txt" maxlength=100></textarea>
+    <button id="btn">留言</button>
+    <ul id="message">
+    </ul>
+  </div>
+</body>
+</html>

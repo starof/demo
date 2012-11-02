@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li{
+	margin:0;
+	padding:0;
+	}
+.menu{
+	margin:20px auto;
+	width:600px;
+	}
+ul{list-style:none;}
+a{
+	text-decoration:none;
+	color:#000;
+	}
+.menu1{
+	width:160px;
+	border:1px solid #ddd;
+	}
+.menu1 li{
+	position:relative;
+	padding-left:20px;
+	width:140px;
+	line-height:42px;
+	}
+.menu1 li:hover{background:#ccc;}
+.menu2,.menu3{
+	display:none;
+	position:absolute;
+	top:-1px;
+	left:160px;
+	border:1px solid #ddd;
+	}
+.menu1 li,.menu2 li,.menu3 li{border-bottom:1px dashed #ccc;}
+.menu1 li:last-child,.menu2 li:last-child,.menu3 li:last-child{border:none;}
+em{
+	font-style:normal;
+	float:right;
+	}
+.active,li.active:hover{background:#C9F;}
+

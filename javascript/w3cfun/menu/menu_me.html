@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+		ul{width:100px;padding-left:0;margin:0;list-style:none;border:1px solid #dfdfdf;}
+		li{position:relative;border-bottom:1px dashed #dfdfdf;margin-bottom:-1px;}
+		.hover{background:pink;}
+		li ul{position:absolute;left:100px;top:0;display:none;margin:0;}
+	</style>
+</head>
+<body>
+	<div>
+		<ul id="nav">
+			<li class="items">
+				<a href="#">Home</a>
+				<ul>
+					<li><a href="#">html</a></li>
+					<li><a href="#">css</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">jquery</a></li>
+				</ul>
+			</li>
+			<li class="items">
+				<a href="#">web</a>
+				<ul>
+					<li><a href="#">html</a></li>
+					<li><a href="#">css</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">jquery</a></li>
+				</ul>
+			</li>
+			<li class="items">
+				<a href="#">javascript</a>
+				<ul>
+					<li><a href="#">html</a></li>
+					<li><a href="#">css</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">jquery</a></li>
+				</ul>
+			</li>
+			<li class="items">
+				<a href="#">contact</a>
+				<ul>
+					<li><a href="#">html</a></li>
+					<li><a href="#">css</a></li>
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">jquery</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	  <script type="text/javascript">
+		$(function(){
+			$("li.items").each(function(){
+				$(this).hover(function(){
+					$(this).addClass("hover");
+					$("ul",this).css("display","block");
+				},function(){
+					$(this).removeClass("hover");
+					$("ul",this).css("display","none");
+				})
+			});
+		})
+	</script> -->
+<script type="text/javascript">
+		var Oul = document.getElementById("nav");
+		for(i=0,len = Oul.children.length; i<len; i++){
+			Oul.children[i].onmouseover = function(){
+				this.className = "hover";
+				this.children[1].style.display = "block";
+			}
+			Oul.children[i].onmouseout = function(){
+			  this.className = "";
+				this.children[1].style.display = "none";
+			}
+		}
+		
+	</script>
+</body>
+</html>

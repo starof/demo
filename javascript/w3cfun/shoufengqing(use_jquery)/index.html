@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>时生,Crow,q125759748</title>
+<style>
+body{
+	background:#000;
+}
+.main{
+	margin:200px auto;
+	width:710px;
+}
+a{text-decoration:none;}
+img{
+	display:block;
+	border:none;
+}
+.slide{
+	position:relative;
+	list-style:none;
+	overflow:hidden;
+	width:700px;
+	height:334px;
+	border:1px solid #000;
+	border-left:none;
+}
+.slide li{
+	position:absolute;
+	top:0;
+	left:0;
+	float:left;
+	border-left:1px solid #000;
+}
+</style>
+</head>
+<body>
+<div class="main">
+	<ul class="slide">
+    	<li><a href="javascript:void(0)"><img src="images/01.jpg" /></a></li>
+    	<li><a href="javascript:void(0)"><img src="images/02.jpg" /></a></li>
+    	<li><a href="javascript:void(0)"><img src="images/03.jpg" /></a></li>
+    	<li><a href="javascript:void(0)"><img src="images/04.jpg" /></a></li>
+    	<li><a href="javascript:void(0)"><img src="images/05.jpg" /></a></li>
+    	<li><a href="javascript:void(0)"><img src="images/06.jpg" /></a></li>
+    </ul>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+/* 写法一*/
+$(function(){
+	var Slide = function (){
+		var $li = $(".slide li");
+		var w = 500;
+		var mOut = function(){
+			$li.each(function(i){
+				$(this).css({left : i * 120 + "px",zIndex:i});
+				$(this).mouseover(function(){
+						var l = 0;
+						$li.each(function(index){
+							$li.eq(index).stop(true,false).animate({left:l + "px"},500);
+							l = i == index ? l + 500 : l +  50 ;
+						})
+				})
+				$(this).mouseout(function(){
+					$li.each(function(index){
+						$li.eq(index).stop(true,false).animate({ left : index * 120 + "px"},500);
+					})
+				})
+			})
+		}
+		var init = function(){
+			mOut();	
+		}
+		return init();
+	}
+	Slide();
+})
+
+/*写法二*/
+/*$(function(){
+	var $li = $(".slide li");
+	$li.each(function(i){//遍历LI元素
+		$(this).css({left : i * 120 + "px",zIndex:i});//设置初始位置
+		$(this).mouseover(function(){
+				var l = 0;
+				$li.each(function(index){
+					$li.eq(index).stop(true,false).animate({left:l + "px"},500);	//l初始为0，循环第一次第一个LI的LEFT值为0
+					l = i == index ? l + 500 : l +  50 ;//如果index索引等于鼠标指向的索引，则后面的一个LI加（图片+左边框）500像素，否则加50像素
+				})
+		})
+		$(this).mouseout(function(){
+			$li.each(function(index){
+				$li.eq(index).stop(true,false).animate({ left : index * 120 + "px"},500);	//动画效果还原初始位置
+			})
+		})
+	})
+})*/
+
+</script>
+</body>
+</html>

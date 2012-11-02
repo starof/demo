@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+		.small{position:relative;float:left;border:1px solid #dfdfdf;margin-right:20px;}
+		.big{overflow:hidden;position:relative;float:left;display:none;width:500px;height:500px;border:1px solid #dfdfdf;}
+		.cover{position:absolute;top:0;left:0;z-index:10;display:none;width:100px;height:100px;background:url(images/overlay.png);}
+		.big_img{position:absolute;top:0;left:0;}
+	</style>
+</head>
+<body>
+	<div class="small" id="small">
+		<span class="cover" id="cover"></span>
+		<img src="images/small.jpg" alt="" class="small_img" id="small_img"/>
+	</div>
+	<div class="big" id="big"><img src="images/big.jpg" alt="" class="big_img" id="big_img"/></div>
+	<script type="text/javascript">
+		var Osmall_img = document.getElementById("small_img");
+		var Obig_img = document.getElementById("big_img");
+		var Obig = document.getElementById("big");
+		var Osmall = document.getElementById("small");
+		var Ocover = document.getElementById("cover");
+		//var Owrap = document.getElementById("wrap");
+		/*基本功能遮罩、大图，消失/显示*/
+		//之前用Osmall_img上加的mouse事件，然后导致遮罩图和大图都一闪一闪的，后来才发现，当鼠标移动慢的时候，遮罩图和大图会消失，然后再移动他们
+		//又会重新出现，下面是阿欣总结的问题原因：
+		/*
+		你不是有个遮罩对吧，你鼠标移动的时候遮罩出现了，然后遮罩的位置在鼠标的位置上，
+		然后鼠标就跑到遮罩上了，就是离开了img.一离开img就执行mouseout了，然后遮罩消失了，
+		然后鼠标又跑到img上了。然后一直循环重复这样的事件，然后就闪了
+		*/
+		Osmall.onmouseover = function(){
+			Ocover.style.display = "block";
+			Obig.style.display = "block";
+		}
+		Osmall.onmouseout = function(){
+			Ocover.style.display = "none";
+			Obig.style.display = "none";
+		}
+		/*难点功能：让遮罩图跟着鼠标走*/
+		Osmall.onmousemove = function(event){//刚才遮罩图出现在small图的最上角的坐标(1,1)，是因为在Osmall_img上面加的move事件，这样img跟small的div之间有1px的间隔
+			var Oevent = event || window.event;
+			//没有减去Ocover.w/2和Ocover.h/2之前，鼠标位于遮罩图的左上角
+			//用style.left和style.top必须加“px”才起作用，但在这里用style似乎有点问题,虽然下面限定了他的活动区间，但是都不起作用
+			//left和top可以理解为鼠标的移动距离
+			//下面这两句是找到遮罩图的中心位置
+			var left = Oevent.clientX - Osmall.offsetLeft - Ocover.offsetWidth/2;
+			var top = Oevent.clientY - Osmall.offsetTop  - Ocover.offsetHeight/2;
+			//下面这段if可以是看作给遮罩图定位，也就是限定遮罩图的活动范围，因为最终赋值给了遮罩图的left和top属性
+			if(left < 0){
+				left = 0;
+			}else if(left > Osmall.offsetWidth - Ocover.offsetWidth){
+				left = Osmall.offsetWidth - Ocover.offsetWidth;
+			}
+			if(top < 0){
+				top = 0;
+			}else if(top > Osmall.offsetHeight - Ocover.offsetHeight){
+				top = Osmall.offsetHeight - Ocover.offsetHeight;
+			}
+			Ocover.style.left = left + "px";
+			Ocover.style.top = top + "px";
+			/*难点功能2：让大图跟遮罩图在小图中移动而移动相应的距离*/
+			var px = left/(Osmall.offsetWidth - Ocover.offsetWidth);
+			var py = top/(Osmall.offsetHeight - Ocover.offsetHeight);
+			/*这里要求big_img必须也是绝对定位的，不然没有left和top属性，所以他也不会根据小图移动而移动*/
+			Obig_img.style.left = px * (Obig.offsetWidth - Obig_img.offsetWidth) + "px";
+			Obig_img.style.top = py * (Obig.offsetHeight - Obig_img.offsetHeight) + "px";
+			document.title = Obig_img.style.left + "|" + Obig_img.style.top;
+		}
+	</script>
+</body>
+</html>

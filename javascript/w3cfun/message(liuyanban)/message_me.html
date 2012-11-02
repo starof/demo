@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+		textarea{width:500px;height:100px;}
+		ul{clear:both;padding-left:0;list-style:none;}
+		ul li{overflow:hidden;zoom:1;margin-bottom:20px;}
+		ul li .user_img{float:left;width:60px;height:60px;margin-right:10px;border-radius:5px;border:1px solid #ff3300;}
+		ul li p{float:left;width:400px;height:60px;margin:0;padding:5px;border:1px solid #dfdfdf;}
+		p{overflow:hidden;zoom:1;width:500px;}
+		.btn{float:right;width:80px;height:30px;line-height:30px;background:-moz-linear-gradient(top,#ffcc00,#ff3300);text-align:center;text-decoration:none;color:#fff;font-weight:bold;border-radius:5px;border:1px solid #ff3300;}
+	</style>
+</head>
+<body>
+	<textarea name="" id="txtara"></textarea>
+	<p><a href="#" class="btn" id="btn">发表</a></p>
+	<ul>
+	</ul>
+	<script type="text/javascript">
+		
+		var Obtn = document.getElementById("btn");
+		var Oul = document.getElementsByTagName("ul")[0];
+		Obtn.onclick = function(){
+		  var Otxtara = document.getElementById("txtara");
+	    var Oli = document.createElement("li");
+			if(Otxtara.value == ""){
+				alert("内容不能为空！");
+			}else{
+				Oli.innerHTML = "<a href='#' class='user_img'><img src='images/head.jpg' alt='' /></a><p>"+ Otxtara.value +"</p>";
+				Oul.appendChild(Oli);
+			}
+		}
+		
+	</script>
+</body>
+</html>

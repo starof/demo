@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js入门练习——菜单</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css" />
+<script type="text/javascript">
+window.onload = function()
+{
+	var oMenu1 = document.getElementById("menu1");/*获取第1个列表ul*/
+	var oLi = oMenu1.getElementsByTagName("li");/*获取所有的li*/
+	var i = 0;
+	for(i = 0;i<oLi.length;i++)
+	{
+		/*功能一：鼠标经过，添加当前效果，子列表显示*/
+		oLi[i].onmouseover = function(){/*鼠标经过，为li添加当前效果，子列表显示*/
+ 			if(this.children.length > 1){
+					this.className = "active";
+					this.children[2].style.display = "block"; 
+					}
+		}
+		/*功能二：鼠标离开，清除当前效果，子列表隐藏*/
+		oLi[i].onmouseout = function(){
+					this.className = "";
+					this.children[2].style.display = "none"; 
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+	<div class="menu">
+  	<ul class="menu1" id="menu1">
+    	<li><a href="###">Home</a></li>
+      <li>
+      	<a href="###">web</a>
+        <em>》</em>
+      	<ul class="menu2">
+        	<li><a href="###">html</a></li>
+          <li><a href="###">css</a></li>
+          <li><a href="###">jquery</a></li>
+          <li>
+          	<a href="###">javascript</a>
+        		<em>》</em>
+          	<ul class="menu3">
+            	<li><a href="###">javascript基础</a></li>
+              <li><a href="###">BOM</a></li>
+              <li><a href="###">DOM</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="###">javascript</a></li>
+      <li><a href="###">Contact</a></li>
+    </ul>
+  </div>
+</body>
+</html>

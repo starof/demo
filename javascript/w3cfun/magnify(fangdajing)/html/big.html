@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js入门练习——放大镜</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css" />
+<script type="text/javascript">
+window.onload = function()
+{		
+	var oDiv = document.getElementById("container");
+	var oSmall = document.getElementById("container_small");
+	var oOverlay = document.getElementById("container_overlay");
+	var oBig = document.getElementById("container_big");
+	var oImg = oBig.getElementsByTagName("img")[0];
+	/*功能一：鼠标经过，“遮罩”和“放大区域”显示*/
+	oSmall.onmouseover = function()
+	{
+		oOverlay.style.display = "inline-block";
+		oBig.style.display = "block";
+	}
+	/*功能二：鼠标离开，“遮罩”和“放大区域”隐藏*/
+	oSmall.onmouseout = function()
+	{
+		oOverlay.style.display = "none";
+		oBig.style.display = "none";
+	}
+	/*功能三：鼠标移动，“遮罩”和“放大区域”随鼠标移动*/
+	oSmall.onmousemove = function(ev)
+	{
+		var oEvent = ev || event;
+		/*鼠标在遮罩图片居中位置显示*/
+		//console.log(oEvent.clientX + "|" +oEvent.clientY);
+		//console.log(oEvent.X);
+		var l = oEvent.clientX-oDiv.offsetLeft-oOverlay.offsetWidth/2;
+		var t = oEvent.clientY-oDiv.offsetTop-oOverlay.offsetHeight/2;
+		/*遮罩图片的移动位置*/
+		//console.log(l);
+		//document.title = l + "|" +t;
+		if(l < 0){
+				l = 0;
+			}else if(l > oSmall.offsetWidth-oOverlay.offsetWidth)//防止遮罩图片出了small的右边界
+			{
+			 l = oSmall.offsetWidth-oOverlay.offsetWidth;
+			}
+		if(t < 0){
+				t = 0;
+			}else if(t > oSmall.offsetHeight-oOverlay.offsetHeight)//防止遮罩图片出了small的下边界
+			{
+				t = oSmall.offsetHeight-oOverlay.offsetHeight;
+			}
+		oOverlay.style.left = l + "px";
+		oOverlay.style.top = t + "px";
+		/*求遮罩对应小图的百分比*/
+		//因为px = left小/offwidth小= left大/offwidth大，所以left大=offwidth大*px
+		var percentX = l/(oSmall.offsetWidth-oOverlay.offsetWidth);
+		//document.title = percentX;
+		var percentY = t/(oSmall.offsetHeight-oOverlay.offsetHeight);
+		/*大图移动位置*/
+		oImg.style.left = percentX * (oBig.offsetWidth-oImg.offsetWidth) + "px";
+		oImg.style.top = percentY * (oBig.offsetHeight-oImg.offsetHeight) + "px";	
+		document.title = oImg.style.left + "|" + oImg.style.top;
+	}
+}
+</script>
+</head>
+
+<body>
+	<div id="container">
+  	<div id="container_small">
+    	<img src="../images/small.jpg" width="460" height="460" />
+      <span id="container_overlay"></span>
+    </div>
+    <div id="container_big">
+    	<img src="../images/big.jpg" width="1000" height="1000" />
+    </div>
+  </div>
+</body>
+</html>
