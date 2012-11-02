@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+	  .imgshows{overflow:hidden;position:relative;width:100px;height:100px;}
+		
+	</style>
+</head>
+<body>
+	<div class="car_show">
+		<h1>cars show</h1>
+		<ul id="cars">
+			<li><a href="#">first car</a></li>
+			<li><a href="#">second car</a></li>
+			<li><a href="#">third car</a></li>
+			
+		</ul>
+	</div>
+	<div class="imgshows"><img id="imgid" src="images/topics.gif" alt="car shows" title="cars show"/></div>
+	<script type="text/javascript">
+		function positionLinks(){//完成一个功能：鼠标悬停到哪个链接，显示第几个图片
+			var carslist = document.getElementById("cars");
+			var links = carslist.getElementsByTagName("a");
+			var imgid = document.getElementById("imgid");
+			imgid.style.position = "absolute";
+			imgid.style.left = "0px";
+			imgid.style.top = "0px";
+			links[0].onmouseover = function() {
+				moveElement("imgid",-100,0,10);
+			}
+			links[1].onmouseover = function() {
+				moveElement("imgid",-200,0,10);
+			}
+			links[2].onmouseover = function() {
+				moveElement("imgid",-300,0,10);
+			}
+		}
+		function moveElement(elemId,final_x,final_y,interval){
+			if(!document.getElementById) return false;
+			if(!document.getElementById(elemId)) return false;
+			var elem = document.getElementById(elemId);
+			if(elem.move){
+				clearTimeout(elem.move);
+			}
+			
+			var offset_x = parseInt(elem.style.left);//刚才不起作用是因为，没有把字符串转换成数值，elem.style.left的返回值是字符串
+			var offset_y = parseInt(elem.style.top);
+			
+			if(offset_x == final_x && offset_y == final_y){
+				return true;
+			}
+			if(offset_x < final_x){
+				offset_x++;
+			}else if(offset_x > final_x){
+				offset_x--;
+			}
+			if(offset_y < final_y){
+				offset_y++;
+			}else if(offset_y > final_y){
+				offset_y--;
+			}
+			
+			elem.style.left = offset_x + "px";
+			elem.style.top = offset_y + "px";
+			
+			var repeat = "moveElement('" + elemId +"'," + final_x + "," + final_y + "," + interval + ")";
+			elem.move = setTimeout(repeat,interval);
+		
+		}
+		
+		positionLinks();
+		
+	</script>
+</body>
+</html>

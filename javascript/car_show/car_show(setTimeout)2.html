@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	<title>test</title>
+	<style>
+	.imgshows{overflow:hidden;position:relative;width:200px;height:400px;}
+	</style>
+</head>
+<body>
+<div class="car_show">
+    <h1>cars show</h1>
+    <ul id="cars">
+        <li><a href="#">first car</a></li>
+        <li><a href="#">second car</a></li>
+        <li><a href="#">third car</a></li>
+        <li><a href="#">forth car</a></li>
+    </ul>
+</div>
+<div class="imgshows"><img id="imgid" src="http://img.daqi.com/upload/slidepic/2008-10-16/124_f66f9cec733f3eab3e7a451f8b80795f.jpg" alt="car shows" title="cars show"/></div>
+<script type="text/javascript">
+	var move=function(elemId,x,y,interval){
+				var elemid = document.getElementById(elemId);
+				if(elemid.move){clearTimeout(elemid.move)}
+				 var final_x=x;
+				 var final_y=y;
+				 var xoff = parseInt(elemid.style.left);
+				 var yoff = parseInt(elemid.style.top);
+         return function(){
+            if(xoff == final_x && yoff == final_y){
+						 clearTimeout(elemid.move);
+						 arguments.callee=null;
+						 return
+            }
+            if(xoff < final_x){
+                xoff+=4;
+				
+            }else if(xoff > final_x){
+              xoff-=4;
+			 
+            }
+            if(yoff < final_y){
+              yoff+=4;
+			  
+            }else if(yoff > final_y){
+              yoff-=4;
+			 
+            }
+							elemid.style.left = xoff + "px";
+							elemid.style.top = yoff + "px";
+							elemid.move=setTimeout(arguments.callee,interval);
+            }
+                
+          }
+
+
+function positionLinks(){//完成一个功能：鼠标悬停到哪个链接，显示第几个图片
+
+			var carslist = document.getElementById("cars");
+			var links = carslist.getElementsByTagName("a");
+			var imgid = document.getElementById("imgid");
+	
+			imgid.style.position = "absolute";
+			imgid.style.left = "0px";
+			imgid.style.top = "0px";
+			for(var i=0; i<links.length; i++){
+					(function(i){
+					
+					links[i].onmouseover = function(){
+						move("imgid",i*(-100),0,3)();
+					}
+					})(i)                           
+				 
+			}
+				
+		}
+			 
+		positionLinks();
+	</script>
+</body>
+</html>

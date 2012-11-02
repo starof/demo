@@ -1,0 +1,18 @@
+﻿<body>
+<form name="myform">
+	<input type="text" id="panel" name="panel" value="" style="width:960px;">
+</form>
+<script>
+var txt="1 开始的时候是蓝色的，白色是没有结束 0";  //设定滚动文字 21
+var panel = document.getElementById("panel");  //获得文本框对象
+
+function up(){
+	panel.value = txt;  //更新文本框值
+	//当这两句同时出现就保证字符串的长度不会改变，一增一减正好抵消，一前一后模拟滚动
+	txt = txt.substring(txt.length - 1,txt.length) + txt;  //用末尾字符补首字符 ,单有这句字符串长度一直在增长，因为每次都会把最后一个字加在上一次字符串的开始位置，而原本字符串的最后一个字符仍保留在字符串的最后位置上不变
+	txt = txt.substring(0,txt.length - 1);  //删除以更新末尾字符，单有这句字符串长度会一直减少，直到减到字符串为空停止，因为每次都是截取0到最后一个字符前的一个字符，其效果就想到于每次都会把最后一个字符删除
+	setTimeout(up,2000);  //回调函数
+}
+up();  //开始执行
+</script>
+</body>

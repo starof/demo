@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>随机产生文本</title>
+</head>
+<body>
+您最喜欢中国的哪个城市：
+<script type="text/javascript">
+	
+	var a = Math.floor(Math.random()*10);
+	var arr = new Array('北京','上海','广州','哈尔滨','长春','武汉','沈阳','大连','呼和浩特','成都');
+	console.log("%d",arr);
+	console.dir(arr);
+	document.write(arr[a]);
+</script>
+</body>
+</html>

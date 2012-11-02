@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+</head>
+<body>
+	<div>
+    <p>look at me</p>
+</div>
+
+<script type="text/javascript">
+/*最初想法下面函数两个作用1：确定现在位置，2：修改坐标位置。最后决定把这个函数的两个作用拆开，让一个函数只做一件事情*/
+function positionCont(){
+   if(!document.getElementsByTagName) return false;
+   var p = document.getElementsByTagName("p")[0];
+   p.style.position = "absolute";
+   p.style.left = "100px";
+   p.style.top = "50px";
+	 /*上午一直都不行，是因为我只是定义了movement，却没有外部调用它，在movement内部的setTimeout也是函数自身调用*/
+    move = setInterval(movement,30);//这个他是自动执行函数，换成这个也行，不过就要去的movement里面的setTimeout啦
+		//move = setTimeout(movement,1000);//这个他只会执行一次
+    //movement();//这样可以执行
+		
+}
+function movement(){//获取现在元素的位置，然后修改他的位置
+   if(!document.getElementsByTagName) return false;
+   var p = document.getElementsByTagName("p")[0];
+   var offset_x = parseInt(p.style.left);
+   var offset_y = parseInt(p.style.top);
+    if(offset_x == 300 && offset_y == 200){//判断是否到目的地
+       return true;      
+    }
+    if(offset_x < 300){
+        offset_x+=10;
+    }else if(offset_x > 300){
+       offset_x--;   
+    }
+    if(offset_y < 200){
+      offset_y+=30;   
+    }else if(offset_y > 200){
+      offset_y--;    
+    }
+    p.style.left = offset_x + "px";
+    p.style.top = offset_y + "px";
+    //move = setTimeout(movement,30);
+}
+positionCont();
+</script>
+</body>
+</html>
