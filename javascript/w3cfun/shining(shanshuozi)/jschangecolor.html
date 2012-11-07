@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>js每日一练颜色变换</title>
+<style type="text/css">
+	h1 
+	{
+	   font-size:72px;
+	   text-align:center;
+	}
+	.active
+	{
+		display:none;
+	}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var first=document.getElementsByTagName("h1")[0];
+		var sec=document.getElementsByTagName("h1")[1];
+		
+		var i=0;
+		
+		var timer=null;
+		
+		function changeColor(){
+			i++;
+			/*if(i%2==0){
+				first.style.color="red";
+			}else if(i%3==0){
+				first.style.color="green";
+			}else{
+				first.style.color="blue";
+			}*/
+			switch(true){
+				case i%2==0:first.style.color="red";break;
+				case i%3==0:first.style.color="green";break;
+				default:first.style.color="blue";
+			}
+		}
+		
+		setInterval(changeColor,'200');
+		var j=0;
+		function changeStyle(){
+			j++;
+	
+			if(j%2){
+				sec.className="";
+			}else
+			{
+				sec.className="active";
+			}
+		}
+		timer=setInterval(changeStyle,200);
+	}
+</script>
+</head>
+<body>
+	<h1>W3C funs</h1>
+	<h1>W3C funs</h1>
+</body>
+
+</html>

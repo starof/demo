@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+</head>
+<body>
+	<h1>W3C funs i love js</h1>
+	<h1>W3C funs i love js</h1>
+	<script type="text/javascript">
+		var i=0,j=0,doc=document;
+		//用局部变量存储全局变量
+		var Oh= doc.getElementsByTagName("h1");
+		function changeColor(){
+			i++;
+			//练习switch的用法，js中的switch可以是任意数据类型，case后面可以是表达式，变量
+			//这里用true，是因为每个case都返回一个布尔值
+			switch(true){
+				case i%2==0:Oh[0].style.color="red";break;
+				case i%3==0:Oh[0].style.color="green";break;
+				default:Oh[0].style.color="blue";
+			}
+			//用setTimeout代替setInterval
+			setTimeout(changeColor,200);
+		}
+		function changeStle(){
+			j++;
+			///练习条件表达式
+		  j%2==0?(Oh[1].style.display="none"):(Oh[1].style.display="block");
+			setTimeout(changeStle,200);
+		}
+		changeColor();
+		changeStle();
+	</script>
+</body>
+</html>
