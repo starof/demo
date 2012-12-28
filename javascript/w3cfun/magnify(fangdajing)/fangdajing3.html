@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+.page_preview{position:relative;width:400px;height:500px;border:1px solid #ddd;margin:200px 0 0 100px;background:#ccc;z-index:2;}
+
+.mark1{position:absolute;top:50px;left:100px;width:200px;height:30px;background:blue;border:2px solid red;z-index:3;}
+.mark2{position:absolute;bottom:40px;left:100px;width:200px;height:30px;background:green;border:2px solid red;z-index:3;}
+.page{position:relative;z-index:2;display:inline-block;margin-right:20px;}
+.cover{position:absolute;top:0;left:0;z-index:100;width:50px;height:50px;border:1px solid #ccc;background:#000;opacity:0.5;}
+.page img{width:400px;height:500px;}
+.big{overflow:hidden;display:inline-block;width:300px;height:400px;border:1px solid #ccc;}
+.big img{width:600px;height:700px;}
+	</style>
+</head>
+<body>
+	<div class="page_preview" id="page_preview">
+		<div class='marklist'>
+			<div class="mark1" id="mark1"></div>
+			<div class="mark2" id="mark2"></div>
+		</div>
+		<div class="page" id="page">
+			
+			<span class="cover" id="cover"></span>
+			<img src='http://www.baidu.com/img/baidu_sylogo1.gif'>
+		</div>
+		<div class="big" id="big">
+			<img class="big_img" src="http://www.baidu.com/img/baidu_sylogo1.gif">
+		</div>
+  </div>
+	<script type="text/javascript">
+		var Osmall = document.getElementById('page'),
+      Ocover = document.getElementById('cover'),
+			Opreview = document.getElementById('page_preview'),
+			Opreview = document.getElementById('page_preview'),
+      Obig = document.getElementById('big');
+			out = Opreview.onmouselever || Opreview.onmouseout;
+			over = Opreview.onmouseenter || Opreview.onmouseover;
+    over = function(){
+			Ocover.style.display = "block";
+			Obig.style.display = "block";
+		};
+		out = function(){
+			Ocover.style.display = "none";
+			Obig.style.display = "none";
+		}; 
+		
+		Osmall.onmousemove = function(event){
+			var Oevent = event || window.event;
+			//没有减去Ocover.w/2和Ocover.h/2之前，鼠标位于遮罩图的左上角
+			//left和top可以理解为鼠标的移动距离
+			var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
+			var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+			var left = Oevent.clientX + scrollLeft - Osmall.parentNode.offsetLeft - Ocover.offsetWidth/2;
+			var top = Oevent.clientY + scrollTop - Osmall.parentNode.offsetTop  - Ocover.offsetHeight/2;
+			if(left < 0){
+				left = 0;
+			}else if(left > Osmall.offsetWidth - Ocover.offsetWidth){
+				left = Osmall.offsetWidth - Ocover.offsetWidth;
+			}
+			if(top < 0){
+				top = 0;
+			}else if(top > Osmall.offsetHeight - Ocover.offsetHeight){
+				top = Osmall.offsetHeight - Ocover.offsetHeight;
+			}
+			Ocover.style.left = left + "px";
+			Ocover.style.top = top + "px";
+			document.title = left + '|' + top;
+  };
+	</script>
+</body>
+</html>
