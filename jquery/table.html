@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style>
+	  .tb1{border:1px solid #ccc;}
+	  th,td{padding:5px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+	  .highlight{background:red;color:#fff;}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<h2>点击高亮一行</h2>
+	<table border="0" cellspacing="0" cellpadding="0" class='tb1'>
+		<thead>
+			<tr>
+				<th></th>
+				<th>name</th>
+				<th>sex</th>
+				<th>job</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- 	<tr>
+				<td><input type="radio" name='required' checked/></td>
+				<td>Tom</td>
+				<td>male</td>
+				<td>student</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name='required'/></td>
+				<td>kate</td>
+				<td>female</td>
+				<td>teacher</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name='required'/></td>
+				<td>Tom</td>
+				<td>male</td>
+				<td>student</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name='required'/></td>
+				<td>kate</td>
+				<td>female</td>
+				<td>teacher</td>
+			</tr> -->
+			<tr>
+				<td><input type="checkbox" name='required' checked class='aa'/></td>
+				<td>Tom</td>
+				<td>male</td>
+				<td>student</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='required'/></td>
+				<td>kate</td>
+				<td>female</td>
+				<td>teacher</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='required'/></td>
+				<td>Tom</td>
+				<td>male</td>
+				<td>student</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name='required'/></td>
+				<td>kate</td>
+				<td>female</td>
+				<td>teacher</td>
+			</tr>
+		</tbody>
+	</table>
+	<table id="score">
+  <thead>
+    <tr>
+      <th>Test
+      <th>Result
+  <tfoot>
+    <tr>
+      <th>Average
+      <td>82%
+  <tbody>
+    <tr>
+      <td>A
+      <td>87%
+    <tr>
+      <td>B
+      <td>78%
+    <tr>
+      <td>C
+      <td>81%
+</table>
+<h2>闭合同类项</h2>
+<table border='1' cellspacing='0' cellpadding='0' class='tb3'>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>gender</th>
+			<th>job</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id='row_1' class='parent'>
+			<td colspan="3">前端</td>
+		</tr>
+		<tr class='child_row_1'>
+			<td>Tom</td>
+			<td>male</td>
+			<td>student</td>
+		</tr>
+		<tr class='child_row_1'>
+			<td>Jack</td>
+			<td>male</td>
+			<td>Enginer</td>
+		</tr>
+		<tr id='row_2' class='parent'>
+			<td colspan="3">后端</td>
+		</tr>
+		<tr class='child_row_2'>
+			<td>Tom</td>
+			<td>male</td>
+			<td>student</td>
+		</tr>
+		<tr class='child_row_2'>
+			<td>Jack</td>
+			<td>male</td>
+			<td>Enginer</td>
+		</tr>
+		<tr class='child_row_2'>
+			<td>Jack</td>
+			<td>male</td>
+			<td>super Enginer</td>
+		</tr>
+	</tbody>
+</table>
+<h2>筛选查询输入框的姓</h2>
+<input type="text" class='inp'/>
+<table border='1' cellpadding='0' cellspacing='0' class='tb4'>
+	<thead>
+		<tr>
+			<td>name</td>
+			<td>sex</td>
+			<td>job</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>王平</td>
+			<td>男</td>
+			<td>老师</td>
+		</tr>
+		<tr>
+			<td>张贺</td>
+			<td>男</td>
+			<td>工程师</td>
+		</tr>
+		<tr>
+			<td>张晓</td>
+			<td>女</td>
+			<td>会计</td>
+		</tr>
+		<tr>
+			<td>李慧芬</td>
+			<td>女</td>
+			<td>会计</td>
+		</tr>
+	</tbody>
+</table>
+	<script>
+		$(function(){
+			//table 1
+			//选中radio，tr高亮
+			/*$('input:radio').click(function(){
+				$(this).closest('tr').addClass('highlight').siblings().removeClass('highlight');
+			});*/
+			//点击tr，tr高亮，选中radio
+			$('.tb1 tr :radio:checked').closest('tr').addClass('highlight');//初始化
+			$('.tb1 tbody tr').click(function(){
+				// 第一种方法
+				//$(this).addClass('highlight').siblings().removeClass();
+				//$(this).find('td>input:radio').prop('checked',true).end().siblings().find('td>input:radio').prop('checked',false);
+				//第二种方法
+				//$(this).addClass('highlight').siblings().removeClass().end().find(':radio').prop('checked',true);
+			});
+			$('.tb1 tbody tr').click(function(){
+				//第一种方法
+				/*if($(this).hasClass('highlight')){
+					
+					$(this).removeClass('highlight').find(':checkbox').prop('checked',false);
+				}else{
+					$(this).addClass('highlight').find(':checkbox').prop('checked',true).end().siblings().removeClass('highlight').find(':checkbox').prop('checked',false);
+				}*/
+				var hashighlight = $(this).hasClass('highlight');
+				$(this)[hashighlight?"removeClass":"addClass"]('highlight').find(':checkbox').prop('checked',!hashighlight).end().siblings().removeClass('highlight').find(':checkbox').prop('checked',false);
+			});
+
+
+			 //table 2
+   var table = document.getElementById("score");
+    var groups = table.tBodies;
+   //console.log(groups);
+    var rows = null;
+    /*var cells = [];
+    
+    for (var i = 0; i < groups.length; i++) {
+      rows = groups[i].rows;
+      console.log(rows);
+      for (var j = 0; j < rows.length; j++) {
+        cells.push(rows[j].cells[1]);
+      }
+    }*/
+    var cells = document.querySelectorAll("#score>tbody>tr>td:nth-of-type(2)");
+    console.log(cells);
+
+
+    //table 3
+    $('.tb3 tbody tr.parent').click(function(){
+    	//alert(this.id);
+    	$(this).nextAll('.child_'+ this.id).toggle();
+    });
+
+    //table 4
+    $('.inp').keyup(function(){
+    	//$('.tb4 tbody tr').hide().filter(':contains("'+$(this).val()+'")').show();
+    	$('tb4 tbody tr').filter(':contains("'+$(this).val()+'")');
+    });
+
+
+		
+  
+
+
+});
+
+	</script>
+</body>
+</html>

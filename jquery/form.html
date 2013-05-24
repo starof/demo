@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<style>
+	  select{width:100px;height:100px;}
+    .frm{margin-bottom:10px;}
+    .frm label{float:left;width:100px;text-align:right;}
+/*    .frmbtn{text-align:center;}*/
+.frmbtn a{margin-left:20px;}
+.error{color:#f00;}
+.success{color:green;}
+
+	</style>
+</head>
+<body>
+  <h2>select 左右添加内容</h2>
+	 <select name="" id="" multiple class='sel1'>
+    <option value="1">11</option>
+    <option value="2">22</option>
+    <option value="3">33</option>
+    <option value="4">44</option>
+  </select>
+  <select name="" id="" multiple class='sel2'></select>
+  <p>
+    <a href="#" class='toright'>选中添加到右侧</a>
+    <a href="#" class='toleft'>选中添加到左侧</a>
+    <a href="#" class='Alltoright'>全部到右侧</a>
+    <a href="#" class=Alltoleft>全部到左侧</a> 
+  </p>
+ <h2>表单验证</h2>
+ <div class="form">
+   <div class="frm"><label>用户名：</label><input type="text" class='username'/></div>
+   <div class="frm"><label>邮箱：</label><input type="text" class='email'/></div>
+   <div class="frmbtn"><a href="#"><span>确定</span></a><a href="#"><span>重置</span></a></div>
+ </div>
+  <script>
+    $(function(){
+      //两个select添加内容
+      $('.toright').click(function(){
+      //第一种方法
+       var opt = $('.sel1 option:selected');
+        $('.sel2').append(opt); //opt.appendTo('.sel2');
+        //第二种方法
+        /*$('.sel1 option:selected').each(function(){
+          var optnew = '<option value="'+$(this).val()+'">'+$(this).text()+'</option>';
+          $('.sel2').append(optnew);
+          $(this).remove();
+        })*/
+      });
+      $('.Alltoright').click(function(){
+        var opts = $('.sel1 option');
+        $('.sel2').append(opts);
+      });
+      $('.sel1 option').dblclick(function(){
+        if($(this).is(':selected')){
+          $(this).appendTo('.sel2');
+        }
+      })
+      //表单验证
+      $('.username').blur(function(){
+        var str = $(this).val();
+        var error;
+        if(str.length<6){
+          errormag = '输入字数不能小于6';
+          error = '<span class="error">'+errormag+'</span>';
+        }else{
+          errormag = '正确';
+          error = '<span class="success">'+errormag+'</span>';
+        }
+        $('.error').remove();
+        $(this).parent().append(error);
+      }).focus(function(){
+        $(this).val('');
+        $('.error').remove();
+        $('.success').remove();
+      });
+      $('.email').blur(function(){
+        var str = $(this).val();
+        var pattern = /^\w+(\.|\_)@\w+\.[a-zA-Z]{2,4}$/g;
+        var error;
+        if(pattern.test(str)){
+           error = '<span class="success">正确</span>';
+        }else{
+           error = '<span class="error">输入格式不正确</span>';
+        }
+        $('.error').remove();
+        $(this).parent().append(error);
+      }).focus(function(){
+        $('.error').remove();
+        $('.success').remove();
+        $(this).val('');
+      });
+
+    });
+    
+  </script>
+</body>
+</html>
