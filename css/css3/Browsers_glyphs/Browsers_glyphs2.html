@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>|w3cplus | css3|css3教程,css3实例,css3动画</title>
+	<meta name="keywords" content="css3学习,css3属性详解,css3 transition,如何学好css3">
+	<meta name="description" content="W3CPLUS是一个前端爱好者的家园，W3CPLUS努力打造最优秀的web 前端学习的站点。W3CPLUS力求原创，以一起学习，一起进步，共同分享为原则。W3CPLUS站提供了有关于css,css3,html,html5,jQuery,手机移动端的技术文档、DEMO、资源，与前端爱好者一起共勉。">
+	<link rel="shortcut icon" href="http://www.w3cplus.com/sites/all/themes/marvin/favicon.ico">
+	<script type="text/javascript" charset="UTF-8" src="http://www.w3cplus.com/demo/css3/prefixfree.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.w3cplus.com/demo/css3/base.css" media="all" />
+	<style>
+	@font-face {
+		font-family: 'different';
+		src:url('fonts/different.eot');
+		src:url('fonts/different.eot?#iefix') format('embedded-opentype'),
+			url('fonts/different.woff') format('woff'),
+			url('fonts/different.ttf') format('truetype'),
+			url('fonts/different.svg#different') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+		.wrap{width:400px;height:300px;margin:0 auto;background:#e7f9f9;}
+		.wrap_container{display:table-cell;vertical-align:middle;width:400px;height:300px;}
+		.content{position:relative;z-index:1;width:340px;height:220px;margin:0 auto;box-shadow:0 2px 4px 0 rgba(148,196,196,.45);background:#fff;border-radius:5px;}
+		.content:before{position:absolute;bottom:8px;content:'';z-index:-1;width:340px;height:212px;background:#fff;box-shadow:0 2px 2px 0 rgba(148,196,196,.25);border-radius:5px;}
+		.content:after{position:absolute;bottom:4px;content:'';z-index:-2;width:340px;height:216px;background:#fff;box-shadow:0 2px 2px 0 rgba(148,196,196,.25);border-radius:5px;}
+		.cont_head{overflow:hidden;padding:10px;text-align:right;}
+		.cont_head .close{position:relative;float:left;width:22px;height:22px;border-radius:11px;background:rgba(203,239,183,.1);}
+		.cont_head .close:after{position:absolute;top:3px;left:3px;content:'×';width:16px;height:16px;line-height:16px;border-radius:8px;background:#cbefb7;text-align:center;color:#fff;font-weight:bold;font-size:14px;}
+		.cont_head h1{line-height:22px;font-size:14px;color:#6cb8b8;}
+		.cont_body{overflow:hidden;zoom:1;padding:50px 15px;}
+		.cont_item{float:left;position:relative;width:72px;height:72px;line-height:72px;border-radius:5px;margin-right:3px;border:1px solid #f0f0f0;text-align:center;}
+		.cont_item p{position:absolute;bottom:-15px;left:0;width:72px;height:30px;color:#adaaac;font-size:13px;text-align:center;}
+		.cont_item:before{position:absolute;left:0;width:72px;text-align:center;font-family:'different';font-size:41px;}
+		.cont_item:after{position:absolute;right:3px;bottom:3px;content:'';width:6px;height:6px;border-radius:3px;background:#fbed8e;}
+		.cont_item:nth-child(1){color:#fac6a4;}
+		.cont_item:nth-child(1):before{content:'\66';}
+		.cont_item:nth-child(2){color:#87d1fb;}
+		.cont_item:nth-child(2):before{content:'\69';}
+		.cont_item:nth-child(3){color:#cbefb7;}
+		.cont_item:nth-child(3):before{content:'\63';}
+		.cont_item:nth-child(3):after{background:#cbefb7;}
+		.cont_item:nth-child(4){color:#77d8ef;margin-right:0;}
+		.cont_item:nth-child(4):before{content:'\73';}
+		.cont_item:nth-child(4):after{background:#cbefb7;}
+	</style>
+</head>
+<body>
+<div class="wrap_top_nav">
+	<nav id="top_nav">
+		<ul class="inline-style clearfix">
+			<li><a href="http://www.w3cplus.com" target="_blank">w3cplus</a></li>
+			<li><a href="http://www.w3cplus.com/resources/css3-tutorial-and-case" target="_blank">css3详解教程</a></li>
+			<li><a href="http://www.w3cplus.com/demos/list.html" target="_blank">css3实例</a></li>
+			<li><a href="http://www.w3cplus.com/demo/tags/242.html" target="_blank">藤藤每日一练</a></li>
+		</ul>
+		<a id="read" href="" target="_blank">查看原文>></a>
+	</nav>
+</div>
+<div class="page">
+	<header id="header">
+		<hgroup class="white blank">
+			<h1>css3</h1>
+			<h2>作者：大漠(如有更好建议或疑问请加群：1041263)</h2>
+		</hgroup>
+	</header>
+	<section class="demo">
+		<div class="wrap">
+			<div class="wrap_container">
+				<div class="content">
+					<div class="cont_head">
+						<a href="#" class='close'></a>
+						<h1>Supported browsers</h1>
+					</div>
+					<div class="cont_body">
+						<div class="cont_item">
+							<p>Firefox</p>
+						</div>
+						<div class="cont_item">
+							<p>IE</p>
+						</div>
+						<div class="cont_item">
+							<p>Chrome</p>
+						</div>
+						<div class="cont_item">
+							<p>Safari</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="ad_w3cplus">
+		<div class="grid-ad">
+		<script type="text/javascript">
+/*250*250，创建于2012-10-14-3*/
+var cpro_id = "u1089145";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+		</div>
+		<div class="grid-ad">
+		<script type="text/javascript">
+/*250*250，创建于2012-10-14-2*/
+var cpro_id = "u1089141";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+		</div>
+		<div class="grid-ad">
+		<script type="text/javascript">
+/*250*250，创建于2012-10-11*/
+var cpro_id = "u1086065";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+		</div>
+		<p><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F177319b798978621f83845b12c86fa29' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</p>
+	</section>
+</div>
+</body>
+</html>
