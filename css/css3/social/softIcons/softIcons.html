@@ -9,16 +9,25 @@
 	<script type="text/javascript" charset="UTF-8" src="http://www.w3cplus.com/demo/css3/prefixfree.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://www.w3cplus.com/demo/css3/base.css" media="all" />
 	<style>
-		.wrap{width:610px;height:320px;margin:0 auto;background:#e7e9e7;}
-		.wrap_container{display:table-cell;vertical-align:middle;width:610px;height:320px;}
-		.content{width:170px;height:180px;margin:0 auto;}
-		.content .btn{position:relative;width:160px;height:50px;line-height:50px;margin-bottom:60px;border:none;background-color:#fff rgba(0,0,0,.06);background-image:-webkit-linear-gradient(top,rgba(255,255,255,.07),rgba(0,0,0,.07));text-align:center;box-shadow:inset 0 2px 0 0 #fff;font-size:18px;text-shadow:0 1px 0 rgba(255,255,255,.75);color:rgba(140,137,140,.6);text-transform:uppercase;}
-		.content .btn:after{position:absolute;left:0;bottom:-5px;content:'';width:158px;height:5px;border-radius: 0 0 29px 29px/0 0 4px 4px;background-color: #9b9b9b;background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,.2), rgba(255,255,255,.2));box-shadow:0 4px 4px 0 rgba(0,0,0,.2);}
-		.content .btn:nth-child(2):after{bottom:0;background:none;box-shadow:1px 4px 4px 0 rgba(0,0,0,.3);}
-		.content .btn:hover{background-image:-webkit-linear-gradient(top,rgba(0,0,0,.07),rgba(255,255,255,.07));}
-		.content .btn:active{position:relative;top:1px;box-shadow:none;}
-		.content .btn:active:after{box-shadow:none;}
-		.content .btn:nth-child(1):active:after{background:none;box-shadow:none;}
+		@font-face {
+		font-family: 'different';
+		src:url('fonts/different.eot');
+		src:url('fonts/different.eot?#iefix') format('embedded-opentype'),
+			url('fonts/different.woff') format('woff'),
+			url('fonts/different.ttf') format('truetype'),
+			url('fonts/different.svg#different') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+		.content_wrap{width:380px;height:280px;margin:0 auto;background:#ece8df;padding:10px;}
+		.content{display:table-cell;vertical-align:middle;width:380px;height:280px;border:1px dashed #b4b1a8;box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);text-align:center;}
+		.content .button{position:relative;width:90px;height:90px;border-radius:45px;background-image:-webkit-linear-gradient(bottom,#f5f3ef,#d8d4c9);border:none;margin-right:30px;}
+		.content .button:after{position:absolute;top:10px;left:10px;content:'';width:68px;height:68px;border-radius:34px;background-image:-webkit-linear-gradient(bottom,#c7c0b0,#f2efe9);border:1px solid rgba(153,147,140,.63);box-shadow:inset 0 6px 6px rgba(255,255,255,.6),inset 0 -6px 6px 0 rgba(0,0,0,.07),0 3px 6px 0 rgba(0,0,0,.25);}
+		.content .button:before{position:absolute;top:10px;left:10px;content:'';z-index:10;width:68px;height:68px;line-height:68px;text-align:center;color:#beb9ad;background-image:-webkit-linear-gradient(bottom,#afa99d,#d9d5cb);-webkit-background-clip:text;font-size:36px;font-family:'different';text-shadow:0 1px rgba(255,255,255,.65), 0 -1px rgba(0,0,0,.35);}
+		.content .button:hover:before{background-image:-webkit-linear-gradient(bottom, #afa99d, #999);text-shadow: 0 0 20px rgba(137,255,0,.31), 0 1px rgba(255,255,255,.65), 0 -1px rgba(0,0,0,.35),0 0 4px rgba(255,237,0,.44);}
+		.content .button:nth-child(1):before{content:'\66';}
+		.content .button:nth-child(2):before{content:'\63';} 
+		.content .button:active:after{background-image:-webkit-linear-gradient(bottom,#f2efe9,#c7c0b0);box-shadow:inset 0 1px 5px 0 rgba(137,255,0,.31),0 2px 5px 0 rgba(255,255,255,.23),inset 0 0 10px 0 rgba(211,66,121,.18),inset 0 2px 4px 0 rgba(0,0,0,.23);}
 	</style>
 </head>
 <body>
@@ -28,7 +37,7 @@
 			<li><a href="http://www.w3cplus.com" target="_blank">w3cplus</a></li>
 			<li><a href="http://www.w3cplus.com/resources/css3-tutorial-and-case" target="_blank">css3详解教程</a></li>
 			<li><a href="http://www.w3cplus.com/demos/list.html" target="_blank">css3实例</a></li>
-			<!-- <li><a href="http://www.w3cplus.com/demo/tags/242.html" target="_blank">藤藤每日一练</a></li> -->
+			<li><a href="http://www.w3cplus.com/demo/tags/242.html" target="_blank">藤藤每日一练</a></li>
 		</ul>
 		<a id="read" href="" target="_blank">查看原文>></a>
 	</nav>
@@ -41,12 +50,10 @@
 		</hgroup>
 	</header>
 	<section class="demo">
-		<div class="wrap">
-			<div class="wrap_container">
-				<div class="content">
-					<button class='btn'>Push me</button>
-					<button class='btn'>Release me</button>
-				</div>
+		<div class="content_wrap">
+			<div class="content">
+				<button class="button"></button>
+				<button class="button"></button>
 			</div>
 		</div>
 	</section>
