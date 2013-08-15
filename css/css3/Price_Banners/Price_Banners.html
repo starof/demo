@@ -11,26 +11,28 @@
 	<style>
 		.body{background:#ebebeb;}
 		.content{width:640px;margin:0 auto;}
-		.content ul{/*overflow:hidden;*/}
-		.content li{float:left;}
+		.content li{float:left;position:relative;}
+		.content li:after{position:absolute;content:'$';font-size:25px;}
+
 		.content li:nth-child(1){width:80px;height:80px;padding-top:20px;padding-left:20px;border-radius:50px;background-color:#d84c48;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #bb524f;text-align:center;font-size:50px;font-weight:bold;color:#b42825;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
-		/*.content li:nth-child(1){width:80px;height:80px;padding-top:20px;padding-left:20px;border-radius:50px;background-color:#d84c48;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #bb524f;text-align:center;font-size:50px;font-weight:bold;color:#b42825;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
-		.content li span{position:relative;display:block;}
-		.content li:nth-child(1) span:before{position:absolute;top:0;left:0;content:'BUY NOW';color:#b42825;font-size:13px;}
-		.content li:nth-child(1) span:after{position:absolute;top:10px;left:0;content:'$';color:#b42825;font-size:25px;}
-		.content li:nth-child(3){position:relative;width:97px;height:70px;padding-top:15px;padding-left:10px;border-radius:20px;background-color:#15a0c3;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #0481a0;text-align:center;font-size:50px;font-weight:bold;color:#0a7a98;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
-		.content li:nth-child(3) span{height:100px;background-color:#15a0c3;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));}
-		.content li:nth-child(3) span:before{position:absolute;top:0px;left:10px;content:'BUY NOW';color:#0a7a98;font-size:13px;}
-		.content li:nth-child(3) span:after{position:absolute;top:10px;left:5px;content:'$';color:#0a7a98;font-size:25px;}
-		.content li:nth-child(3):before{position:absolute;bottom:0;left:20%;content:'';width:20px;height:20px;background:#fff;border-radius:0 20px 0 0;}
-		.content li:nth-child(3):after{position:absolute;bottom:0;right:20%;content:'';width:20px;height:20px;background:#fff;border-radius:20px 0 0 0;}*/
-		.content li:nth-child(2){position:relative;width:100px;height:66px;padding-top:20px;padding-left:20px;border-radius:20px 20px 20px 0;background-color:#afcc0f;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #91af00;text-align:center;font-size:50px;font-weight:bold;color:#74941d;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
-		.content li:nth-child(2):before{position:absolute;left:0;bottom:-20px;content:'';width:50px;height:20px;background:#99bb09;border-radius:0 0 0 30px;}
-		.content li:nth-child(2) span:before{position:absolute;left:18px;bottom:-21px;content:'';width:33px;height:20px;background:#fff;border-radius:15px 0 0 0;}
+		.content li:nth-child(1):after{left:15px;top:30px;}
+		.content li:nth-child(1) span:before{position:absolute;top:20px;left:20px;content:'BUY NOW';color:#b42825;font-size:13px;}
+
+		.content li:nth-child(2){position:relative;width:100px;height:66px;padding-top:20px;padding-left:20px;margin:0 30px;border-radius:20px 20px 20px 0;background-color:#afcc0f;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #91af00;text-align:center;font-size:50px;font-weight:bold;color:#74941d;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
+		.content li:nth-child(2):before{position:absolute;left:-1px;bottom:-26px;content:'';width:50px;height:26px;background:#8EAA19;border-radius:0 0 0 30px;}
+		.content li:nth-child(2):after{left:30px;top:30px;}
+		.content li:nth-child(2) span:before{position:absolute;left:18px;bottom:-27px;content:'';width:33px;height:26px;background:#fff;border-radius:15px 0 0 0;}
+		.content li:nth-child(2) p{position:absolute;top:8px;left:-8px;width:134px;height:23px;line-height:23px;background-color:#618400;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.2),rgba(255,255,255,.2));border:1px solid #5a7a00;box-shadow:0 1px 1px rgba(0,0,0,.24);font-size:13px;color:#d7e7a8;text-shadow:0 1px 1px #354900;text-transform:uppercase;letter-spacing:2px;}
+		.content li:nth-child(2) p:before{position:absolute;bottom:-13px;left:-1px;z-index:-1;content:'';border-left:14px solid transparent;border-right:14px solid transparent;border-top:14px solid #2b3b00;}
+		.content li:nth-child(2) p:after{position:absolute;bottom:-13px;right:-1px;z-index:-1;content:'';border-left:14px solid transparent;border-right:14px solid transparent;border-top:14px solid #2b3b00;}
+		.content li:nth-child(2) p em{font-style:normal;color:#638112;margin:0 5px;text-shadow:-1px 0px 1px rgba(0,0,0,.7),0px 2px 4px rgba(255, 255, 255, 0.51);}
+
 		.content li:nth-child(3){position:relative;width:97px;height:70px;padding-top:15px;padding-left:10px;border-radius:20px;background-color:#15a0c3;background-image:-webkit-linear-gradient(bottom,rgba(0,0,0,.16),rgba(255,255,255,.36));border:1px solid #0481a0;text-align:center;font-size:50px;font-weight:bold;color:#0a7a98;text-shadow:0 1px rgba(255,255,255,.25),0 -1px rgba(0,0,0,.46);}
 		.content li:nth-child(3):before{position:absolute;bottom:-20px;left:30px;content:'';width:50px;height:20px;background:#0f8db4;}
+		.content li:nth-child(3):after{left:15px;top:27px;}
 		.content li:nth-child(3) span:before{position:absolute;bottom:-21px;left:30px;content:'';width:25px;height:20px;background:#fff;border-radius:0 30px 0 0;}
 		.content li:nth-child(3) span:after{position:absolute;bottom:-21px;right:27px;content:'';width:25px;height:20px;background:#fff;border-radius:30px 0 0 0;}
+		.content li:nth-child(3) p{position:absolute;top:15px;left:20px;font-size:13px;}
 	</style>
 </head>
 <body>
@@ -56,8 +58,8 @@
 		<div class="content">
 			<ul>
 				<li><span>29</span></li>
-				<li><span>59</span></li>
-				<li><span>39</span></li>
+				<li><span>59</span><p><em>★</em>special<em>★</em></p></li>
+				<li><span>39</span><p>BUY NOW</p></li>
 			</ul>
 		</div>
 	</section>
